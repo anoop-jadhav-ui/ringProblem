@@ -6,7 +6,7 @@
 
 ## gltf -> jsx transform
 
-npx gltfjsx --types ./public/portfolio.glb --transform
+npx gltfjsx --types ./public/ringProblem.glb --transform
 
 ### Other flags
 
