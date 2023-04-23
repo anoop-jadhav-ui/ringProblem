@@ -12,22 +12,22 @@ const ConfigInterface = () => {
     setDiamond,
   } = useRingConfig();
 
-  const changeHeadMetal = (e) => {
+  const changeHeadMetal = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
     startTransition(() => {
-      setHeadColor(e.target.value);
+      setHeadColor(e.target.value as "gold" | "silver");
     });
   };
-  const changeBodyMetal = (e) => {
+  const changeBodyMetal = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
     startTransition(() => {
-      setBodyColor(e.target.value);
+      setBodyColor(e.target.value as "gold" | "silver");
     });
   };
-  const changeDiamond = (e) => {
+  const changeDiamond = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.value);
     startTransition(() => {
-      setDiamond(e.target.value);
+      setDiamond(e.target.value as unknown as 1 | 2 | 3);
     });
   };
 
@@ -48,6 +48,7 @@ const ConfigInterface = () => {
       <section>
         <fieldset>
           <legend>Head Metal</legend>
+          {/* @ts-ignore */}
           <div onClick={changeHeadMetal}>
             <input
               id="metal1"
@@ -70,6 +71,7 @@ const ConfigInterface = () => {
         </fieldset>
         <fieldset>
           <legend>Body Metal</legend>
+          {/* @ts-ignore */}
           <div onClick={changeBodyMetal}>
             <input
               id="bodymetal1"
@@ -92,6 +94,7 @@ const ConfigInterface = () => {
         </fieldset>
         <fieldset>
           <legend>Diamond</legend>
+          {/* @ts-ignore */}
           <div onClick={changeDiamond}>
             <input
               id="diamond1"
