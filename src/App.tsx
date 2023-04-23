@@ -1,6 +1,7 @@
 import { Globals } from "@react-spring/three";
 import "./App.css";
-import { Portfolio } from "./components/Portfolio/Portfolio";
+import { RingCanvas } from "./components/Ring/RingCanvas";
+// import { Portfolio } from "./components/Portfolio/Portfolio";
 // import { PortfolioTransformed } from "./components/PortfolioTransformed/PortfolioTransformed";
 
 Globals.assign({
@@ -8,7 +9,7 @@ Globals.assign({
 });
 
 function App() {
-  return <Portfolio />;
+  return <RingCanvas />;
 }
 
 export default App;
