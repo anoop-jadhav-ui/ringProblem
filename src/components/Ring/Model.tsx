@@ -43,22 +43,13 @@ interface BodyType {
 const Body = ({ nodes }: BodyType) => {
   const { bodyColor } = useRingConfig();
   return (
-    <>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.ring1.geometry}
-        material={bodyColor == "gold" ? goldMaterial : silverMaterial}
-        rotation={[0, 0, -Math.PI / 2]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.ring2.geometry}
-        material={bodyColor == "gold" ? goldMaterial : silverMaterial}
-        rotation={[0, 0, -Math.PI / 2]}
-      />
-    </>
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.ring1.geometry}
+      material={bodyColor == "gold" ? goldMaterial : silverMaterial}
+      rotation={[0, 0, -Math.PI / 2]}
+    />
   );
 };
 
@@ -161,7 +152,7 @@ const BgReflector = () => {
 
 export function Model(props: JSX.IntrinsicElements["group"]) {
   const [, startTransition] = useTransition();
-  const { nodes } = useGLTF("/ringProblem-transformed.glb") as GLTFResult;
+  const { nodes } = useGLTF("./ringProblem-transformed.glb") as GLTFResult;
 
   const groupRef = useRef<THREE.Group>(null);
 
@@ -182,4 +173,4 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
   );
 }
 
-useGLTF.preload("/ringProblem-transformed.glb");
+useGLTF.preload("./ringProblem-transformed.glb");
