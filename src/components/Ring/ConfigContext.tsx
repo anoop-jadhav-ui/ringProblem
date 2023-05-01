@@ -1,12 +1,15 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
+export type Metal = "gold" | "silver";
+export type Diamond = "diamond1" | "diamond2" | "diamond3";
 interface ConfigContextType {
-  headColor: "gold" | "silver";
-  bodyColor: "gold" | "silver";
-  diamond: 1 | 2 | 3;
-  setHeadColor: React.Dispatch<React.SetStateAction<"gold" | "silver">>;
-  setBodyColor: React.Dispatch<React.SetStateAction<"gold" | "silver">>;
-  setDiamond: React.Dispatch<React.SetStateAction<1 | 2 | 3>>;
+  headColor: Metal;
+  bodyColor: Metal;
+  diamond: Diamond;
+
+  setHeadColor: React.Dispatch<React.SetStateAction<Metal>>;
+  setBodyColor: React.Dispatch<React.SetStateAction<Metal>>;
+  setDiamond: React.Dispatch<React.SetStateAction<Diamond>>;
 }
 
 const ConfigContext = createContext({} as ConfigContextType);
@@ -16,9 +19,9 @@ export const ConfigContextProvider = ({
 }: {
   children: ReactNode;
 }) => {
-  const [headColor, setHeadColor] = useState<"gold" | "silver">("gold");
-  const [bodyColor, setBodyColor] = useState<"gold" | "silver">("gold");
-  const [diamond, setDiamond] = useState<1 | 2 | 3>(1);
+  const [headColor, setHeadColor] = useState<Metal>("gold");
+  const [bodyColor, setBodyColor] = useState<Metal>("gold");
+  const [diamond, setDiamond] = useState<Diamond>("diamond1");
   return (
     <ConfigContext.Provider
       value={{

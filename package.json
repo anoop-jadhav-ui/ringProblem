@@ -10,10 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
+    "@chakra-ui/react": "^2.6.0",
+    "@emotion/react": "^11.10.8",
+    "@emotion/styled": "^11.10.8",
     "@react-spring/three": "^9.7.2",
     "@react-three/drei": "^9.65.5",
     "@react-three/fiber": "^8.12.2",
     "@react-three/postprocessing": "^2.7.1",
+    "framer-motion": "^10.12.5",
     "gltfjsx": "^6.1.4",
     "leva": "^0.9.34",
     "react": "^18.2.0",

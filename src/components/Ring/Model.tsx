@@ -88,7 +88,7 @@ const Head = ({ nodes }: HeadType) => {
 
   return (
     <>
-      {diamond == 1 && (
+      {diamond == "diamond1" && (
         <mesh
           castShadow
           receiveShadow
@@ -98,7 +98,7 @@ const Head = ({ nodes }: HeadType) => {
           scale={0.41}
         />
       )}
-      {diamond == 2 && (
+      {diamond == "diamond2" && (
         <mesh
           castShadow
           receiveShadow
@@ -110,7 +110,7 @@ const Head = ({ nodes }: HeadType) => {
         />
       )}
 
-      {diamond == 3 && (
+      {diamond == "diamond3" && (
         <mesh
           castShadow
           receiveShadow

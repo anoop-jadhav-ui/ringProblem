@@ -1,7 +1,25 @@
-import { useTransition } from "react";
-import { useRingConfig } from "./ConfigContext";
+import { ChevronUpIcon } from "@chakra-ui/icons";
+import {
+  Button,
+  ButtonGroup,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  Grid,
+  GridItem,
+  Heading,
+  IconButton,
+  Radio,
+  RadioGroup,
+  Stack,
+} from "@chakra-ui/react";
+import { useState, useTransition } from "react";
+import { Diamond, Metal, useRingConfig } from "./ConfigContext";
 
 const ConfigInterface = () => {
+  const [isOpen, setOpen] = useState(true);
   const [, startTransition] = useTransition();
   const {
     diamond,
@@ -12,120 +30,126 @@ const ConfigInterface = () => {
     setDiamond,
   } = useRingConfig();
 
-  const changeHeadMetal = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+  const changeHeadMetal = (nextValue: string) => {
     startTransition(() => {
-      setHeadColor(e.target.value as "gold" | "silver");
+      setHeadColor(nextValue as Metal);
     });
   };
-  const changeBodyMetal = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+  const changeBodyMetal = (nextValue: string) => {
     startTransition(() => {
-      setBodyColor(e.target.value as "gold" | "silver");
+      setBodyColor(nextValue as Metal);
     });
   };
-  const changeDiamond = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
+  const changeDiamond = (nextValue: string) => {
     startTransition(() => {
-      setDiamond(e.target.value as unknown as 1 | 2 | 3);
+      setDiamond(nextValue as Diamond);
     });
   };
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        border: "1px solid yellowgreen",
-        zIndex: 1,
-        right: "2rem",
-        padding: "2rem",
-        color: "black",
-        top: "50%",
-        transform: "translateY(-50%)",
-      }}
-    >
-      <h3>Configure your favourite Ring</h3>
-      <section>
-        <fieldset>
-          <legend>Head Metal</legend>
-          {/* @ts-ignore */}
-          <div onClick={changeHeadMetal}>
-            <input
-              id="metal1"
-              type="radio"
-              name="headmetal"
-              value="gold"
-              checked={headColor == "gold"}
-            ></input>
-            <label htmlFor="metal1">Gold</label>
-
-            <input
-              id="metal2"
-              type="radio"
-              name="headmetal"
-              value="silver"
-              checked={headColor == "silver"}
-            ></input>
-            <label htmlFor="metal2">Silver</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Body Metal</legend>
-          {/* @ts-ignore */}
-          <div onClick={changeBodyMetal}>
-            <input
-              id="bodymetal1"
-              type="radio"
-              name="bodymetal"
-              value="gold"
-              checked={bodyColor == "gold"}
-            ></input>
-            <label htmlFor="bodymetal1">Gold</label>
-
-            <input
-              id="bodymetal2"
-              type="radio"
-              name="bodymetal"
-              value="silver"
-              checked={bodyColor == "silver"}
-            ></input>
-            <label htmlFor="bodymetal2">Silver</label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Diamond</legend>
-          {/* @ts-ignore */}
-          <div onClick={changeDiamond}>
-            <input
-              id="diamond1"
-              type="radio"
-              name="diamond"
-              value="1"
-              checked={diamond == 1}
-            ></input>
-            <label htmlFor="diamond1">Diamond 1</label>
-
-            <input
-              id="diamond2"
-              type="radio"
-              name="diamond"
-              value="2"
-              checked={diamond == 2}
-            ></input>
-            <label htmlFor="diamond2">Diamond 2</label>
-
-            <input
-              id="diamond3"
-              type="radio"
-              name="diamond"
-              value="3"
-              checked={diamond == 3}
-            ></input>
-            <label htmlFor="diamond3">Diamond 3</label>
-          </div>
-        </fieldset>
-      </section>
-    </div>
+    <>
+      <ButtonGroup
+        size="lg"
+        isAttached
+        variant="solid"
+        colorScheme="linkedin"
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          zIndex: 1,
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+        onClick={() => setOpen(true)}
+      >
+        <Button>Configure Ring</Button>
+        <IconButton aria-label="Configure Ring" icon={<ChevronUpIcon />} />
+      </ButtonGroup>
+      <Drawer
+        placement="bottom"
+        onClose={() => setOpen((value) => !value)}
+        isOpen={isOpen}
+        size="xs"
+      >
+        <DrawerContent>
+          <DrawerHeader textAlign="center">
+            Configure your favourite Ring
+            <DrawerCloseButton />
+          </DrawerHeader>
+          <DrawerBody>
+            <Grid
+              templateColumns="repeat(3, 1fr)"
+              templateRows="repeat(3, 1fr)"
+            >
+              <GridItem w="100%"></GridItem>
+              <GridItem w="100%" h="16">
+                <Grid templateRows="repeat(3, 1fr)" gap={4}>
+                  <GridItem>
+                    <fieldset>
+                      <legend>
+                        <Heading as="h5" size="sm" color="GrayText">
+                          Head Metal
+                        </Heading>
+                      </legend>
+                      <RadioGroup onChange={changeHeadMetal} value={headColor}>
+                        <Stack spacing={5} direction="row">
+                          <Radio value="gold" size="lg">
+                            Gold
+                          </Radio>
+                          <Radio value="silver" size="lg">
+                            Silver
+                          </Radio>
+                        </Stack>
+                      </RadioGroup>
+                    </fieldset>
+                  </GridItem>
+                  <GridItem>
+                    <fieldset>
+                      <Heading as="h5" size="sm" color="GrayText">
+                        Body Metal
+                      </Heading>
+                      <RadioGroup onChange={changeBodyMetal} value={bodyColor}>
+                        <Stack spacing={5} direction="row">
+                          <Radio value="gold" size="lg">
+                            Gold
+                          </Radio>
+                          <Radio value="silver" size="lg">
+                            Silver
+                          </Radio>
+                        </Stack>
+                      </RadioGroup>
+                    </fieldset>
+                  </GridItem>
+                  <GridItem>
+                    <fieldset>
+                      <legend>
+                        <Heading as="h5" size="sm" color="GrayText">
+                          Diamond
+                        </Heading>
+                      </legend>
+                      <RadioGroup onChange={changeDiamond} value={diamond}>
+                        <Stack spacing={5} direction="row">
+                          <Radio value="diamond1" size="lg">
+                            Diamond 1
+                          </Radio>
+                          <Radio value="diamond2" size="lg">
+                            Diamond 2
+                          </Radio>
+                          <Radio value="diamond3" size="lg">
+                            Diamond 3
+                          </Radio>
+                        </Stack>
+                      </RadioGroup>
+                    </fieldset>
+                  </GridItem>
+                </Grid>
+              </GridItem>
+              <GridItem w="100%"></GridItem>
+            </Grid>
+          </DrawerBody>
+        </DrawerContent>
+      </Drawer>
+    </>
   );
 };
 
