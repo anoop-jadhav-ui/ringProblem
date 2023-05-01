@@ -20,7 +20,7 @@ const RingCanvasWrapper = ({ children }: { children: ReactNode }) => {
           pointerEvents: "auto",
           zIndex: 1,
         }}
-        frameloop="always"
+        frameloop="demand"
         dpr={window?.devicePixelRatio}
         flat
         shadows
