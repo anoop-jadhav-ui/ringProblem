@@ -135,7 +135,7 @@ const Head = ({ nodes }: HeadType) => {
 
 const BgReflector = () => {
   const material = new THREE.MeshStandardMaterial({
-    color: "pink",
+    color: "#fff1f4",
   });
   return (
     <mesh

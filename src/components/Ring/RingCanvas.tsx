@@ -42,8 +42,8 @@ export function RingCanvas() {
     <>
       <Leva flat collapsed />
       <RingCanvasWrapper>
-        <Stage environment="park" shadows={true} adjustCamera={false}>
-          <Suspense fallback={<LoadingCube />}>
+        <Suspense fallback={<LoadingCube />}>
+          <Stage environment="park" shadows={true} adjustCamera={false}>
             <PresentationControls
               global
               zoom={1}
@@ -52,10 +52,10 @@ export function RingCanvas() {
             >
               <Model />
             </PresentationControls>
-          </Suspense>
-          {/* <axesHelper args={[5]} /> */}
-          {/* <OrbitControls /> */}
-        </Stage>
+            {/* <axesHelper args={[5]} /> */}
+            {/* <OrbitControls /> */}
+          </Stage>
+        </Suspense>
       </RingCanvasWrapper>
     </>
   );
