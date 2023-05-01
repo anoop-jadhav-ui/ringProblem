@@ -88,16 +88,19 @@ const ConfigInterface = () => {
                     <fieldset>
                       <legend>
                         <Heading as="h5" size="sm" color="GrayText">
-                          Head Metal
+                          Diamond
                         </Heading>
                       </legend>
-                      <RadioGroup onChange={changeHeadMetal} value={headColor}>
+                      <RadioGroup onChange={changeDiamond} value={diamond}>
                         <Stack spacing={5} direction="row">
-                          <Radio value="gold" size="lg">
-                            Gold
+                          <Radio value="diamond1" size="lg">
+                            Diamond 1
                           </Radio>
-                          <Radio value="silver" size="lg">
-                            Silver
+                          <Radio value="diamond2" size="lg">
+                            Diamond 2
+                          </Radio>
+                          <Radio value="diamond3" size="lg">
+                            Diamond 3
                           </Radio>
                         </Stack>
                       </RadioGroup>
@@ -124,19 +127,16 @@ const ConfigInterface = () => {
                     <fieldset>
                       <legend>
                         <Heading as="h5" size="sm" color="GrayText">
-                          Diamond
+                          Head Metal
                         </Heading>
                       </legend>
-                      <RadioGroup onChange={changeDiamond} value={diamond}>
+                      <RadioGroup onChange={changeHeadMetal} value={headColor}>
                         <Stack spacing={5} direction="row">
-                          <Radio value="diamond1" size="lg">
-                            Diamond 1
+                          <Radio value="gold" size="lg">
+                            Gold
                           </Radio>
-                          <Radio value="diamond2" size="lg">
-                            Diamond 2
-                          </Radio>
-                          <Radio value="diamond3" size="lg">
-                            Diamond 3
+                          <Radio value="silver" size="lg">
+                            Silver
                           </Radio>
                         </Stack>
                       </RadioGroup>
