@@ -7,6 +7,7 @@ import {
   DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
+  DrawerOverlay,
   Grid,
   GridItem,
   Heading,
@@ -94,13 +95,13 @@ const ConfigInterface = () => {
                       <RadioGroup onChange={changeDiamond} value={diamond}>
                         <Stack spacing={5} direction="row">
                           <Radio value="diamond1" size="lg">
-                            Diamond 1
+                            First
                           </Radio>
                           <Radio value="diamond2" size="lg">
-                            Diamond 2
+                            Second
                           </Radio>
                           <Radio value="diamond3" size="lg">
-                            Diamond 3
+                            Third
                           </Radio>
                         </Stack>
                       </RadioGroup>
