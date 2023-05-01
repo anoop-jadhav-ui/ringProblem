@@ -1,6 +1,6 @@
 import { PresentationControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Leva, useControls } from "leva";
+import { Leva } from "leva";
 import { ReactNode, Suspense } from "react";
 import { LoadingCube } from "../Loader3D/LoadingCube";
 import { ConfigContextProvider } from "./ConfigContext";
