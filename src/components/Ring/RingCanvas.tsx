@@ -1,11 +1,12 @@
 import { PresentationControls, Stage } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Leva } from "leva";
-import { ReactNode, Suspense } from "react";
+import { ReactNode, Suspense, lazy } from "react";
 import { LoadingCube } from "../Loader3D/LoadingCube";
 import { ConfigContextProvider } from "./ConfigContext";
 import ConfigInterface from "./ConfigInterface";
-import { Model } from "./Model";
+
+const Model = lazy(() => import("./Model"));
 
 const RingCanvasWrapper = ({ children }: { children: ReactNode }) => {
   return (
@@ -20,7 +21,7 @@ const RingCanvasWrapper = ({ children }: { children: ReactNode }) => {
           pointerEvents: "auto",
           zIndex: 1,
         }}
-        frameloop="demand"
+        frameloop="always"
         dpr={window?.devicePixelRatio}
         flat
         shadows
@@ -42,18 +43,18 @@ export function RingCanvas() {
       <Leva flat collapsed />
       <RingCanvasWrapper>
         <Stage environment="park" shadows={true} adjustCamera={false}>
-          <PresentationControls
-            global
-            zoom={0.8}
-            rotation={[0, -Math.PI / 2, -Math.PI / 5]}
-            snap
-          >
-            <Suspense fallback={<LoadingCube />}>
+          <Suspense fallback={<LoadingCube />}>
+            <PresentationControls
+              global
+              zoom={1}
+              rotation={[0, -Math.PI / 2, -Math.PI / 5]}
+              snap
+            >
               <Model />
-            </Suspense>
-            {/* <axesHelper args={[5]} /> */}
-            {/* <OrbitControls /> */}
-          </PresentationControls>
+            </PresentationControls>
+          </Suspense>
+          {/* <axesHelper args={[5]} /> */}
+          {/* <OrbitControls /> */}
         </Stage>
       </RingCanvasWrapper>
     </>

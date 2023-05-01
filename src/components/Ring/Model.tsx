@@ -150,7 +150,7 @@ const BgReflector = () => {
   );
 };
 
-export function Model(props: JSX.IntrinsicElements["group"]) {
+function Model(props: JSX.IntrinsicElements["group"]) {
   const [, startTransition] = useTransition();
   const { nodes } = useGLTF("./ringProblem-transformed.glb") as GLTFResult;
 
@@ -174,3 +174,5 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
 }
 
 useGLTF.preload("./ringProblem-transformed.glb");
+
+export default Model;
