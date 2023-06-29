@@ -144,8 +144,9 @@ const BgReflector = () => {
       rotation={[-Math.PI / 2, 0, 0]}
       receiveShadow
       material={material}
+      dispose={null}
     >
-      <circleBufferGeometry args={[1, 128]} />
+      <circleGeometry args={[1, 128]} />
     </mesh>
   );
 };
